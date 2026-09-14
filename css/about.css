@@ -215,7 +215,7 @@ img {
 a{
   color: #E8CBA6;
 }
-/* feedback panel 2 kolom */
+
 /* Kotak pembungkus luar section feedback */
 .about-feedback {
   max-width: 1100px;
@@ -225,7 +225,7 @@ a{
 
 /* Panel utama form feedback: dibagi 2 kolom lewat CSS Grid.
    Kolom kiri (intro/ajakan) sedikit lebih sempit (0.9fr) daripada
-   kolom kanan (form, 1.1fr) */
+   kolom kanan*/
 .feedback-panel {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;

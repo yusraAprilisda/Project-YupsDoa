@@ -1,0 +1,369 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /* border-box membuat lebar/tinggi elemen sudah termasuk padding & border-nya, jadi lebih gampang diatur presisinya */
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  color: #3b2417;
+  overflow-x: hidden;
+  background: #f7efe1;
+  user-select: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Poppins", "Inter", sans-serif;
+  color: #4a2e1d;
+}
+
+/* label kecil assalamualaikum */
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em; /* jarak antar huruf dilebarkan, gaya khas label kecil */
+  text-transform: uppercase; /* teks otomatis jadi HURUF BESAR SEMUA */
+  color: #d9bfa0;
+  margin-bottom: 6px;
+}
+
+/* Bingkai tinggi tetap yang membungkus video/gambar slide */
+.slider {
+  width: 100%;
+  height: 70vh;
+  position: relative;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+/*buat ngatur peletakan teks di dalam vidio*/
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Video di dalam slide */
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Teks caption yang melayang di atas video hero */
+.hero-caption {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-caption h1 {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+/* MENU CEPAT*/
+/* Bagian pengaturan kartu-kartu menu cepat (Doa & Dzikir, Video, Favorit, About) */
+.quick-menu {
+  background: #efe0c7;
+  padding: 40px 20px 55px;
+  text-align: center;
+}
+
+/*mengatur posisi bagian "mulai dari mana?"*/
+.quick-menu h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+/*Penyusunan kartu jadi vertikal*/
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 kolom sama lebar */
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Satu kartu menu dengan iconnnya*/
+.menu-card {
+  background: #f7efe1;
+  border: 1px solid #d9bfa0;
+  border-radius: 18px;
+  padding: 28px 18px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column; /* ikon, judul, deskripsi ditumpuk vertikal */
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s;
+}
+
+/* Ikon lingkaran coklat di dalam tiap kartu menu */
+.menu-card .material-symbols-outlined {
+  font-size: 34px;
+  color: #fff;
+  background: #7a4b30;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ikon rata tengah persis di dalam lingkaran */
+  border-radius: 50%;
+  margin-bottom: 6px;
+}
+
+/*buat teks paragraf di slm kartu*/
+.menu-card p {
+  font-size: 13px;
+  color: #6b5643;
+  line-height: 1.4;
+}
+
+/*efek menonjol pada tiap kartu */
+.menu-card:hover {
+  transform: scale(1.02);
+}
+
+/* JADWAL SHOLAT Kota Bandung*/
+/* Wadah section jadwal sholat*/
+.jadwal-shalat {
+  max-width: 900px;
+  margin: 50px auto 0;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Baris kecil "Kota Bandung, Jawa Barat" di bawah judul section */
+.jadwal-shalat-lokasi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #6b5643;
+  margin-bottom: 24px;
+}
+
+/*pengaturan buat icon tag lokasi nya*/
+.jadwal-shalat-lokasi .material-symbols-outlined {
+  font-size: 18px;
+  color: #b98352;
+}
+
+/*ngatur kartu tiap waktu sholat*/
+.jadwal-shalat-card {
+  background: linear-gradient(135deg, #2b1b12 0%, #4a2e1d 55%, #7a4b30 100%);
+  border-radius: 22px;
+  padding: 30px 24px;
+  box-shadow: 0 14px 32px rgba(43, 27, 18, 0.28);
+  margin-bottom: 100px;
+}
+
+/*ngatur tanggal yang di dalam wadah jadwal solat*/
+.shalat-tanggal {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #d9bfa0;
+  margin-bottom: 22px;
+}
+
+/* mgatur Grid 5 waktu sholat secara vertical*/
+.shalat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Satu kartu kecil untuk 1 waktu sholat */
+.shalat-tile {
+  flex: 1 1 100px; /* boleh melebar/menyusut, tapi lebar dasarnya 100px */
+  min-width: 90px;
+  max-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 8px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.shalat-tile .material-symbols-outlined {
+  font-size: 26px;
+  color: #d9bfa0;
+}
+
+/*ngatur bagian nama solatnya*/
+.shalat-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #d9bfa0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/*dibagian jam nya*/
+.shalat-jam {
+  font-family: "Poppins", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Tile untuk waktu sholat barikutnya (belum lewat jamnya), ditandai
+   lewat class "active" yang ditambahkan oleh index.js.*/
+.shalat-tile.active {
+  background: linear-gradient(135deg, #d9bfa0 0%, #b98352 100%);
+  border-color: transparent;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+}
+
+/*mengatur dibagian teks nya*/
+.shalat-tile.active .material-symbols-outlined,
+.shalat-tile.active .shalat-label,
+.shalat-tile.active .shalat-jam {
+  color: #2b1b12; /* teks & ikon jadi gelap, kontras dengan tile terangnya */
+}
+
+/*buat tampilan load ketika gada jaringan*/
+.jadwal-shalat-card .loader {
+  margin: 10px auto;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid #d9bfa0;
+}
+
+.jadwal-shalat-card .empty-message {
+  color: #d9bfa0;
+}
+
+/*   FOOTER */
+footer {
+  color: #d9bfa0;
+  font-size: 15px;
+  position: relative;
+  background: #2b1b12;
+  padding: 40px 0 0;
+}
+
+/* Wadah dalam footer yang menyusun kolom-kolom (Kontak, Sosial Media, dst) */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap; /* boleh turun baris kalau layar sempit */
+  justify-content: space-between; /* jarak antar kolom disebar merata */
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Tiap kolom di footer */
+.footer-section {
+  flex: auto;
+  margin: 30px 20px;
+}
+
+/* Gaya teks umum di dalam kolom footer */
+.footer-section p,
+.footer-section address,
+.footer-section ul,
+.footer-section li {
+  font-size: 14px;
+  list-style: none;
+  margin: 5px 0;
+  color: #d9bfa0;
+}
+
+.footer-section h3 {
+  margin-bottom: 15px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.footer-section address {
+  line-height: 1.6;
+}
+
+.footer-section a {
+  color: #d9bfa0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-section a:hover {
+  color: #fff;
+}
+
+/* link Kolom sosial media disusun ke bawah (vertikal), bukan menyamping */
+.social-section ul {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Baris paling bawah halaman, berisi teks copyright */
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  padding: 20px 0;
+  margin-top: 20px;
+  background: #21140d;
+  color: #d9bfa0;
+}
+
+/*   RESPONSIVE */
+@media (max-width: 900px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    text-align: center; /* footer jadi rata tengah di layar sempit */
+  }
+  .hero-caption h1 {
+    font-size: 28px; /* judul hero diperkecil dari 40px */
+  }
+}
+
+/* Kalau lebar layar maksimal 576px (HP potrait) */
+@media (max-width: 576px) {
+  .slider {
+    height: 45vh; /* tinggi hero dikurangi dari 70vh jadi 45vh, biar nggak erlalu mendominasi layar HP yang sempit & pendek */
+  }
+  .menu-grid {
+    grid-template-columns: 1fr; /* menu cepat jadi 1 kolom penuh */
+  }
+  .footer-bottom {
+    font-size: 13px;
+  }
+  .hero-caption {
+    bottom: 24px;
+  }
+  .hero-caption h1 {
+    font-size: 22px;
+  }
+  .jadwal-shalat-card {
+    padding: 22px 14px;
+  }
+  .shalat-tile {
+    min-width: 78px;
+  }
+}

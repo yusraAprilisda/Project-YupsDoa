@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://www.my-quran-app.com/doa-dzikir/doa-dzikir.html" />
+  <title>Doa & Dzikir - Yup'sDoa</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="../css/doa-dzikir.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Buat Navbar paling atas-->
+  <div class="dd-sticky-nav">
+    <header>
+      <div class="logo">
+        <img src="../assets/logo-utama.jpg" alt="Logo Yup's Doa" />
+      </div>
+      <nav>
+        <ul class="ul-nav">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="doa-dzikir.html">Doa & Dzikir</a></li>
+          <li><a href="video.html">Video</a></li>
+          <li><a href="favorit.html">Favorit</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Top bar khusus tab Doa/dzikir -->
+    <div class="dd-topbar">
+      <div class="dd-tabs" id="dd-tabs">
+        <button type="button" class="dd-tab active" data-tab="doa">Doa</button>
+        <button type="button" class="dd-tab" data-tab="dzikir">Dzikir</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kotak pencarian -->
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Cari Doa atau Dzikir di sini...">
+    <span class="material-symbols-outlined" aria-hidden="true">search</span>
+  </div>
+
+  <!-- <main> awal berisi loader saja. Isinya berubah-ubah tergantung hal  -->
+  <main id="dd-content">
+    <!-- Loader ini tampil duluan sambil data dari API masih diambil. Begitu data siap, 
+     doa-dzikir.js akan mengganti seluruh isi #dd-content ini dengan grid kategori -->
+    <div class="loader"></div>
+  </main>
+
+  <!--buat botton tombol ke atas-->
+  <button id="scroll-to-top" class="scroll-to-top">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Doa & Dzikir by Yusra</p>
+    </div>
+  </footer>
+
+  <script src="../js/fav.js"></script>
+  <script src="../js/doa-dzikir.js"></script>
+</body>
+</html>

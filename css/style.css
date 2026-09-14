@@ -1,0 +1,184 @@
+/* File ini dipakai di SEMUA halaman (lewat <link rel="stylesheet" href="style.css">) */
+.material-symbols-outlined {
+  font-size: inherit; /* mengambil ukuran font dari elemen induk (misal tombol/link jadi ikon otomatis menyesuaikan ukuran teks di sekitarnya tanpa perlu diatur manual satu-satu */
+  vertical-align: -0.2em;
+}
+
+/* Header/navbar utama di bagian paling atas tiap halaman */
+header {
+  background: linear-gradient(
+    90deg,
+    rgba(43, 27, 18, 0.8) 0%,
+    rgba(74, 46, 29, 0.8) 50%,
+    rgba(122, 75, 48, 0.8) 100%
+  );
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* garis tipis pemisah di bawah navbar */
+  border-radius: 8px;
+  color: #fff;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between; /* logo di kiri, menu di kanan, terpisah jauh */
+  align-items: center; /* rata tengah vertikal */
+  position: sticky; /* membuat navbar menempel disaat halaman di-scroll ke bawah */
+  top: 0;
+  z-index: 10000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Gambar logo di dalam navbar */
+.logo img {
+  width: 112px;
+  height: 112px;
+  object-fit: cover; /* gambar dipotong proporsional biar mengisi penuh kotak 112x112 tanpa gepeng */
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-left: 20px;
+  pointer-events: none; /* pointer-events: none membuat logo TIDAK BISA diklik/dipilih/di-drag oleh mouse, murni cuma dekorasi visual */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Gaya tiap link menu (misal "Home", "About") */
+nav ul li a {
+  color: #fff;
+  display: inline-block;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 15px;
+  position: relative; /* dibuat supaya garis bawah animasi (di aturan::after di bawah) bisa diposisikan tepat relatif ke link ini */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s; /* animasi halus saat di-hover (membesar) */
+}
+
+/* Saat link menu di-hover, teksnya sedikit membesar (115%) */
+nav ul li a:hover {
+  transform: scale(1.15);
+}
+
+/* ::after = elemen semu yang ditambahkan otomatis stlh konten link, dipakai di sini untuk bikin garis bawah animasi */
+nav ul li a::after {
+  display: block;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #fff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease; /* biar animasi munculnya garis halus */
+}
+
+/* Saat link di-hover, garis bawahnya "melebar" jadi 50% lebar link */
+nav ul li a:hover::after {
+  transform: scaleX(0.5);
+}
+
+/* MEDIA QUERIES UNTUK NAVBAR */
+/* menu dibuat boleh wrap ke baris baru dan jarak antar link/padding dikecilkan sedikit */
+@media (max-width: 768px) {
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 4px;
+  }
+  nav ul li a {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+}
+/* Aturan tambahan khusus layar SANGAT sempit (maksimal 320px) */
+@media (max-width: 320px) {
+  .logo img {
+    /* Logo diperkecil (dari 112px jadi 5rem = 80px) biar nggak kegedean di layar HP yang sangat sempit */
+    width: 100px;
+  }
+  nav ul li a {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+}
+
+/* CUSTOM MODAL POP-UP (Global) */
+.custom-modal-overlay {
+  position: fixed; /* menempel di posisi tetap, menutupi seluruh layar */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% lebar layar (viewport width) */
+  height: 100vh; /* 100% tinggi layar (viewport height) */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center; /* kotak modal rata tengah horizontal */
+  align-items: center; /* kotak modal rata tengah vertikal */
+  z-index: 99999;
+  opacity: 1; /* langsung terlihat penuh saat ditempel ke halaman */
+}
+
+/* Kotak putih/coklat di tengah layar, isi sebenarnya dari modal (ikon, judul, pesan, tombol) */
+.custom-modal-box {
+  background: linear-gradient(
+    135deg,
+    rgba(74, 46, 29, 0.92),
+    rgba(122, 75, 48, 0.92)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px; /* lebar dibatasi biar nggak terlalu besar di layar lebar */
+  text-align: center;
+  transform: scale(1); /* ukuran normal (100%), langsung tampil penuh */
+  color: white;
+  display: flex;
+  flex-direction: column; /* ikon, judul, pesan, tombol ditumpuk vertikal */
+  align-items: center;
+  gap: 15px;
+}
+
+/* Ikon besar di bagian atas modal (misal ikon centang, hati, tempat sampah) */
+.custom-modal-icon {
+  font-size: 65px;
+  color: #d9bfa0;
+  text-shadow: 0 0 15px rgba(217, 191, 160, 0.5);
+  margin-bottom: 5px;
+}
+
+/* Judul modal Ditambahkan! */
+.custom-modal-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Pesan penjelasan di bawah judul */
+.custom-modal-message {
+  font-size: 16px;
+  color: #e0e0e0;
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+}
+
+/* Tombol "Tutup" di bagian bawah modal */
+.custom-modal-btn {
+  background: linear-gradient(90deg, #d9bfa0, #7a4b30);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(217, 191, 160, 0.3);
+}
+
+/* Tombol tutup membesar sedikit & bayangannya menebal saat di-hover */
+.custom-modal-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(217, 191, 160, 0.5);
+}

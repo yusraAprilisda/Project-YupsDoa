@@ -1,0 +1,150 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #F7EFE1;
+  background: linear-gradient(90deg, #F7EFE1 0%, #EFE0C7 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bagian judul halaman "Video Dakwah & Kajian" */
+.page-heading {
+  text-align: center;
+  padding: 30px 15px 10px;
+}
+
+/* mengatur header nya */
+.page-heading h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  color: #4A2E1D;
+  display: flex;            /* flex membuat isi h1 (ikon + teks) tersusun sejajar horizontal, bukan menumpuk ke bawah */
+  align-items: center;      /* rata tengah secara vertikal */
+  justify-content: center;  /* rata tengah secara horizontal */
+  gap: 10px;                /* jarak antar elemen di dalamnya */
+}
+
+/*Mengatur paragraf nya*/
+.page-heading p {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #6B5643;
+}
+
+/*  grid vidio 3 per baris*/
+.video-grid {
+  max-width: 1200px;
+  margin: 30px auto 50px;
+  padding: 0 20px;
+  display: grid;                            /* grid mengaktifkan mode tata letak grid (baris & kolom) */
+  grid-template-columns: repeat(3, 1fr);    /* Bikin 3 kolom yang lebarnya SAMA RATA (1fr = 1 bagian pecahan) */
+  gap: 28px 20px;                           
+}
+
+/* Kartu pembungkus tiap video, iframe + info judul di bawahnya */
+.video-card {
+  background: rgba(255, 255, 255, 0.5); 
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 14px;   
+  overflow: hidden;     /* overflow: hidden memotong bagian iframe yang keluar dari sudut membulat kartu, supaya videonya ikut mengikuti bentuk rounded */
+  box-shadow: 0 6px 18px rgba(43, 27, 18, 0.1); 
+  transition: transform 0.25s ease, box-shadow 0.25s ease;    /* transition membuat perubahan transform & shadow (saat hover) jadi halus/animasi, bukan berubah tiba-tiba */
+}
+
+/* Efek saat kursor diarahkan ke kartu video */
+.video-card:hover {
+  transform: translateY(-4px);  /* kartu naik sedikit ke atas 4px */
+  box-shadow: 0 12px 26px rgba(43, 27, 18, 0.18); 
+}
+
+/* Bingkai rasio 16:9 supaya iframe selalu proporsional */
+.video-frame-wrapper {
+  position: relative;   /* relative dibutuhkan supaya iframe di dalamnya (yang position-nya absolute) bisa mengambil ukuran relatif ke wadah ini */
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background: #2B1B12; /* warna gelap sebagai latar sementara video loading */
+}
+
+/*mengatur ukuran & posisi iframe video di dalam kotak wrapper-nya*/
+.video-frame-wrapper iframe {
+  position: absolute;   /* absolute + top/left, 0 membuat iframe menempel penuh mengisi seluruh area wrapper di atas */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0; /* hilangkan garis bingkai bawaan iframe */
+}
+
+/* Baris info di bawah video: ikon + judul + subjudul */
+.video-info {
+  display: flex;
+  align-items: flex-start; /* rata atas, biar ikon sejajar sama baris pertama teks */
+  gap: 10px;
+  padding: 12px 14px 16px;
+}
+
+.video-info .material-symbols-outlined {
+  font-size: 22px;
+  color: #7A4B30;
+  margin-top: 2px; /* geser dikit ke bawah biar sejajar visual sama teks judul */
+}
+
+.video-info .video-text {
+  display: flex;
+  flex-direction: column;   /* membuat judul & subjudul tersusun ke bawah, berbeda dari .video-info di atasnya yang menyamping */
+  gap: 2px;
+}
+
+.video-title {
+  font-size: 15px;
+  font-weight: 600; 
+  color: #4A2E1D;
+}
+
+.video-sub {
+  font-size: 13px;
+  color: #6B5643;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 15px;
+  padding: 25px 15px;
+  margin-top: 25px;
+  background: #2B1B12; 
+  color: #D9BFA0;
+}
+
+/*responsive*/
+/* Di layar segini, grid video jadi 2 kolom saja (bukan 3), biar tiap video nggak kegencet terlalu sempit */
+@media (max-width: 900px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* kalau lebar layar maksimal 600px, di layar HP, grid jadi 1 kolom saja, video ditumpuk vertikal semua */
+@media (max-width: 600px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-heading h1 {
+    /* Judul halaman diperkecil biar muat di layar HP yang sempit */
+    font-size: 24px;
+  }
+}

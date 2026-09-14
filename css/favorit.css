@@ -1,0 +1,218 @@
+html{
+  scroll-behavior: smooth;
+}
+/* CSS reset: menghapus jarak/margin bawaan SEMUA elemen HTML,
+   supaya tata letak halaman bisa diatur dari nol tanpa jarak "misterius" */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Inter', cursive;
+  background: #F7EFE1; 
+  background: linear-gradient(90deg, #F7EFE1 0%, #EFE0C7 100%);
+  min-height: 100vh; /* tinggi minimal = penuh layar */
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+/* Bagian judul halaman Favorit */
+.page-heading {
+  text-align: center;
+  padding: 30px 15px 10px; 
+}
+
+.page-heading h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  color: #4A2E1D;
+  display: flex;             /* biar ikon & teks di judul sejajar horizontal */
+  align-items: center;       /* rata tengah vertikal */
+  justify-content: center;   /* rata tengah horizontal */
+  gap: 10px;                 /* jarak ikon ke teks */
+}
+
+.page-heading p {
+  margin-top: 8px;
+  font-size: 16px;
+  color:#6B5643; 
+}
+
+/* Wadah utama daftar kartu favorit */
+#list-favorit {
+  display: flex;
+  flex-direction: column;  /* kartu-kartu disusun menumpuk ke bawah */
+  align-items: center;     /* semua kartu rata tengah horizontal */
+  gap: 14px;               
+  padding-bottom: 20px;
+}
+
+/* Pesan kosong */
+/* Tampilan saat belum ada satupun favorit yang tersimpan */
+.empty-message {
+  text-align: center;
+  font-size: 18px;
+  padding: 60px 20px;
+  opacity: 0.85; /* sedikit transparan */
+  display: flex;
+  flex-direction: column; /* ikon, teks, link disusun menumpuk ke bawah */
+  align-items: center;
+  gap: 10px;
+  color: #4A2E1D;
+}
+
+.empty-message a {
+  color:#6B5643;
+  font-weight: bold;
+  text-decoration: underline; 
+}
+
+/* Container favorit */
+/* Ini adalah bingkai/kartu utama untuk SATU item favorit */
+.container {
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.35); /* efek kaca buram (frosted glass) */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 700px; 
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+/*mengatur judul dalam tiap kartu*/
+.container h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 10px;
+  color: #4A2E1D;
+  text-align: center;
+}
+
+/* Label kecil (badge) penanda kategori/grup doa, misal "Doa Harian" */
+.container .grup-badge {
+  display: inline-block; /* supaya bisa diberi padding & margin seperti blok, tapi tetap sebaris dengan teks di sekitarnya */
+  font-size: 12px;
+  background: rgba(122, 75, 48, 0.15);
+  color: #4A2E1D;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  font-family: sans-serif;
+}
+
+/* Teks Arab-nya, dibuat besar & rata kanan (sesuai arah baca huruf Arab) */
+.container .arabic-text {
+  font-size: 28px;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+/* Teks terjemahan/arti */
+.container .arti-text {
+  font-size: 17px;
+  text-align: justify;
+  margin-bottom: 16px;
+}
+
+/* Teks sumber/referensi, dibuat lebih kecil & agak transparan karena
+   sifatnya cuma info tambahan, bukan konten utama */
+.container .sumber-text {
+  font-size: 13px;
+  text-align: left;
+  font-style: italic;
+  opacity: 0.75;
+  margin-bottom: 10px;
+}
+
+/* hapus */
+.copy-send-container {
+  display: flex;
+  justify-content: flex-end; /* ikon-ikon rata ke KANAN kartu */
+  gap: 14px; /* jarak antar ikon */
+  margin-top: 8px;
+  font-size: 25px; /* ukuran ikon material-symbols-outlined di dalamnya */
+}
+
+.icon-hapus {
+  color: #a5175e;
+  transition: transform 0.2s; 
+}
+
+/* Saat ikon hapus di-hover, ikonnya membesar 20% sebagai umpan balik visual */
+.icon-hapus:hover {
+  transform: scale(1.2);
+}
+
+/* Tombol bulat melayang di pojok kanan bawah layar, buat scroll ke atas cepat */
+.scroll-to-top {
+  position: fixed;   /* selalu menempel di posisi yang sama walau di-scroll */
+  bottom: 20px;
+  right: 20px;
+  background: #7A4B30; /* warna cadangan kalau gradient gagal */
+  background: linear-gradient(90deg, #7A4B30 0%, #4A2E1D 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%; 
+  padding: 10px;
+  box-shadow: 0 4px 8px rgb(243, 243, 243);
+  cursor: pointer; /* kursor berubah jadi ikon "tangan" saat di-hover, tanda bisa diklik */
+  z-index: 1000;
+  display: none; 
+  transition: opacity 0.3s ease;
+}
+
+/* Saat tombol ini di-hover, membesar sedikit (10%) sebagai umpan balik visual */
+.scroll-to-top:hover {
+  transform: scale(1.1);
+}
+
+/* Class "show" ditambahkan lewat JavaScript saat user sudah scroll cukup
+   jauh ke bawah, baru tombolnya dimunculkan (display: block) */
+.scroll-to-top.show {
+  display: block;
+}
+
+footer{
+  margin-top: auto;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 16px;
+  padding: 25px 0;
+  margin-top: 25px;
+  background: #2B1B12; 
+  color: #D9BFA0;      
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    max-width: 80vw;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 15px; /* padding dikurangi biar konten lebih muat */
+  }
+
+  .container h3 {
+    font-size: 20px; /* judul diperkecil */
+  }
+
+  .container .arabic-text {
+    font-size: 24px; /* teks Arab diperkecil juga */
+  }
+}

@@ -1,0 +1,483 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #F7EFE1; /* warna cadangan kalau gradient di bawah gagal render */
+  background: linear-gradient(90deg, #F7EFE1 0%, #EFE0C7 100%);
+  min-height: 100vh; /* tinggi minimal penuh 1 layar */
+  display: flex;
+  flex-direction: column;
+  color:  #3B2417;
+  user-select: none;
+}
+
+/*ngatur navigasi di tab Doadan dzikir */
+.dd-sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10000; 
+}
+
+/* Header di dalam wadah sticky */
+.dd-sticky-nav header {
+  position: static;
+}
+
+/* ngatur 2 tab doa dzikir biar menempel tepat di bawah navbar utama (otomatis, karena satu wadah sticky bersama header) */
+.dd-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* tab-tabnya rata tengah horizontal */
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px); /* efek kaca buram, konten di belakangnya blur */
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #D9BFA0;
+}
+
+/* Wadah pembungkus luar kedua tombol tab, bentuknya kapsul */
+.dd-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #D9BFA0;
+  border-radius: 30px; /* sangat membulat, bentuk pill */
+  padding: 4px;
+  gap: 4px; /* jarak tipis antar 2 tombol tab */
+}
+
+/* Wadah pembungkus ltiap card kedua tombol tab, bentuknya kapsul */
+.dd-tab {
+  border: none;
+  background: transparent; /* transparan secara default (belum aktif) */
+  padding: 8px 24px;
+  border-radius: 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #6B5643;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s; /* animasi halus saat berpindah status aktif */
+}
+
+/* Tab yang SEDANG DIPILIH user (class "active" ditambahkan lewat JS) */
+.dd-tab.active {
+  background: linear-gradient(90deg, #7A4B30 0%, #4A2E1D 100%);
+  color: #fff;
+}
+
+/* Tab yang TIDAK aktif akan sedikit berubah warna latarnya saat di-hover,sebagai tanda tombol ini bisa diklik */
+.dd-tab:not(.active):hover {
+  background: rgba(122, 75, 48, 0.12);
+}
+
+/*kotak serching*/
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  margin: 20px auto; /* rata tengah horizontal */
+  /* position: relative dibutuhkan supaya ikon kaca pembesar bisa diposisikan tepat relatif ke kotak pencarian ini */
+  position: relative;
+  padding: 0 20px;
+}
+
+/* Ikon kaca pembesar di dalam kotak pencarian */
+.search-container .material-symbols-outlined {
+  position: absolute;
+  right: 34px; /* nempel di sisi kanan kotak input */
+  color: #6B5643;
+}
+
+/*frame buat search*/
+.search-container input {
+  padding: 15px 45px 15px 15px;
+  border: 1px solid #D9BFA0;
+  border-radius: 30px; /* bentuk pill/oval */
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* bayangan sangat tipis */
+  font-size: 16px;
+  width: 100%;
+  color:  #3B2417;
+}
+
+/*keterangan dalam frame input*/
+.search-container input::placeholder {
+  color: #6B5643;
+  font-style: italic;
+}
+
+/* Grid yang menampung kartu-kartu kategori (misal "Doa Harian","Doa Rasul", dst) di tampilan paling awal halaman */
+.dd-kategori-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 kolom sama lebar */
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 24px 40px;
+}
+
+/* wadah kartu kategori, memuat lingkaran nomor + nama kategori + jumlah bacaan */
+.dd-kategori-card {
+  display: flex;
+  align-items: center; /* nomor & teks sejajar rata tengah vertikal */
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid #D9BFA0;
+  border-radius: 16px;
+  padding: 18px 20px;
+  cursor: pointer; /* menandakan kartu ini bisa diklik */
+  /* Beberapa property dianimasikan sekaligus: pergeseran posisi,
+     bayangan, dan warna garis tepi — semua jadi animasi halus 0.2 detik saat kartu di-hover */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Saat kartu kategori di-hover: naik sedikit ke atas, bayangan menebal */
+.dd-kategori-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(43, 27, 18, 0.1);
+  border-color: #B98352;
+}
+
+/* lingkaran nomor urut kategori */
+.dd-kategori-nomor {
+  /* flex-shrink: 0 mencegah lingkaran nomor ini "mengecil" walau ruang di dalam kartu terbatas, ukurannya harus tetap 44x44px */
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; 
+  background: rgba(122, 75, 48, 0.15);
+  color: #4A2E1D;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Wadah nama kategori + jumlah bacaan, disusun vertikal */
+.dd-kategori-teks {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/*wadah buat si judul*/
+.dd-kategori-judul {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #4A2E1D;
+}
+
+/*buat jumlah isinya*/
+.dd-kategori-jumlah {
+  font-size: 13px;
+  color: #6B5643;
+}
+
+/*------ fase 2 -----*/
+/* grid item per 1 kategori */
+/* Grid berisi kartu-kartu judul doa/dzikir setelah user memilih 1 kategori artinya aturan ini hanya berlaku untuk .grid-view yang ada di dlm #dd-content */
+#dd-content .grid-view {
+  display: flex;
+  /* flex-wrap: wrap membuat kartu-kartu otomatis turun baris */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; /* semua kartu dalam 1 baris dibuat sama tinggi */
+  gap: 16px;
+  padding: 10px 24px 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* kartu yg berisi judul 1 doa/dzikir */
+.dd-item-card {
+  font-family: 'Poppins', sans-serif;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  padding: 18px 20px;
+  width: 320px;
+  max-width: 320px;  /* tapi tidak boleh lebih lebar dari 320px */
+  min-width: 220px;  /* dan tidak boleh lebih sempit dari 220px */
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Saat kartu item di-hover: membesar 5% & bayangannya menebal jelas */
+.dd-item-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+/*buat judul card nya*/
+.dd-item-card .dd-item-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4A2E1D;
+}
+
+/*RESPONSIVE */
+/* Kalau lebar layar maksimal 1200px, kartu jadi 2 per baris (bukan 3) */
+@media screen and (max-width: 1200px) {
+  .dd-item-card {
+    width: calc(50% - 16px);
+  }
+}
+
+/* Kalau lebar layar maksimal 576px (HP), kartu jadi 1 per baris penuh */
+@media screen and (max-width: 576px) {
+  .dd-item-card {
+    width: 100%;
+    min-width: 0; /* hapus batas minimum lebar, biar bisa menyesuaikan layar sempit */
+  }
+  .dd-kategori-grid {
+    /* Grid kategori juga jadi 1 kolom di layar HP (bukan 2) */
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tombol "Kembali" halaman ke 2 */
+.dd-back-btn {
+  /* inline-flex = tombol ini tetap sejajar dengan elemen lain di sekitarnya, tapi isiny tersusun flex */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px auto 4px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 30px; 
+  background: linear-gradient(90deg, #7A4B30 0%, #4A2E1D 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Tombol kembali membesar sedikit (5%) saat di-hover */
+.dd-back-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Wadah pembungkus tombol kembali, dibuat rata tengah horizontal */
+.dd-back-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+
+/* DETAIL SATU DOA/DZIKIR */
+/* Wadah pembungkus kartu detail lengkap */
+.dd-detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 0 20px 30px;
+}
+
+/* Kartu utama berisi detail lengkap 1 doa/dzikir */
+.container {
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+/* Kartu detail membesar sedikit (2%) saat di-hover */
+.container:hover {
+  transform: scale(1.02);
+}
+
+.container h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  text-align: left; /* judul rata kiri, beda dari isi lain yang rata tengah/kanan */
+  margin-bottom: 12px;
+  color: #4A2E1D;
+}
+
+/* Label kecil (badge) kategori/grup doa */
+.container .grup-badge {
+  display: inline-block;
+  font-size: 12px;
+  background: rgba(122, 75, 48, 0.15);
+  color: #4A2E1D;
+  padding: 3px 12px;
+  border-radius: 20px; /* bentuk kapsul */
+  margin-bottom: 16px;
+  font-family: sans-serif;
+}
+
+/* Teks Arab: font besar, rata kanan (sesuai arah baca huruf Arab) */
+.container .arabic-text {
+  font-size: 30px;
+  text-align: right;
+  margin-bottom: 20px;
+  line-height: 1.8; /* jarak antar baris dilebarkan, biar teks Arab (yang biasanya punya tanda baca/harakat) lebih lega dibaca */
+}
+
+/* Teks terjemahan/arti */
+.container .arti-text {
+  font-size: 17px;
+  text-align: justify;
+  margin-bottom: 24px;
+}
+
+/* Teks sumber/referensi, dibuat lebih kecil & agak transparan (info tambahan) */
+.container .sumber-text {
+  font-size: 13px;
+  text-align: left;
+  font-style: italic;
+  opacity: 0.75;
+  margin-bottom: 10px;
+}
+
+/* Ikon favorit love */
+/* Ikon hati yang bisa diklik user buat menyimpan/menghapus dari favorit */
+.icon-favorit {
+  transition: transform 0.2s, color 0.2s; /* animasi halus saat berubah ukuran & warna */
+  cursor: pointer;
+}
+
+/* Ikon hati membesar 20% saat di-hover */
+.icon-favorit:hover {
+  transform: scale(1.2);
+}
+
+/* Kalau item ini SUDAH difavoritkan (class "active" ditambahkan lewat JS), ikon hati berubah warna  */
+.icon-favorit.active {
+  color: #e0245e;
+}
+
+/* Baris berisi ikon-ikon aksi fav di bawah kartu detail */
+.copy-send-container {
+  display: flex;
+  justify-content: flex-end; /* ikon rata ke KANAN */
+  gap: 14px;
+  margin-top: 8px;
+  font-size: 25px; /* ukuran ikon material-symbols-outlined di dalamnya */
+  cursor: pointer;
+}
+
+/* pesan kosong loader */
+/* Teks pesan saat data kosong (misal hasil pencarian nggak ketemu, atau API gagal dimuat) */
+.empty-message {
+  text-align: center;
+  font-size: 17px;
+  padding: 40px 20px;
+  opacity: 0.8;
+}
+
+/* Lingkaran loading yang ditampilkan sementara data dari API masih dalam proses diambil */
+.loader {
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top: 5px solid #7A4B30;
+  border-radius: 50%; /* bentuk lingkaran */
+  width: 50px;
+  height: 50px;
+  margin: 40px auto;
+}
+
+
+/* Tombol bulat melayang di pojok kanan bawah, buat scroll cepat ke atas. */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(90deg, #7A4B30 0%, #4A2E1D 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%; 
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000; 
+  display: none; 
+  transition: opacity 0.3s ease;
+}
+
+/* Tombol membesar 10% saat di-hover */
+.scroll-to-top:hover {
+  transform: scale(1.1);
+}
+
+/* Class "show" ditambahkan lewat JS saat user sudah scroll cukup jauh */
+.scroll-to-top.show {
+  display: block;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 16px;
+  padding: 25px 0;
+  margin-top: 25px;
+  background: #2B1B12; 
+  color: #D9BFA0;      
+}
+
+/* Responsive tambahan */
+/* Aturan khusus kalau lebar layar maksimal 768px (tablet/HP) */
+@media (max-width: 768px) {
+  .dd-topbar {
+    /* Kalau muat sempit, elemen di top bar boleh "turun baris" & rata tengah */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    padding: 14px 16px;
+  }
+
+  .container {
+    /* Lebar kartu detail dibuat berdasarkan persentase lebar layar,
+       biar nggak terlalu lebar/sempit di berbagai ukuran HP/tablet */
+    max-width: 90vw;
+    margin: 0 auto;
+  }
+}
+
+/* Aturan tambahan khusus HP dengan layar sempit (maksimal 480px) */
+@media (max-width: 480px) {
+  .dd-kategori-card {
+    padding: 14px 16px; /* padding kartu kategori dikurangi biar muat */
+  }
+
+  .dd-kategori-nomor {
+    /* Lingkaran nomor kategori diperkecil dari 44px jadi 38px */
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  .dd-kategori-judul {
+    font-size: 15px; /* judul kategori diperkecil */
+  }
+
+  .container .arabic-text {
+    font-size: 24px; /* teks Arab diperkecil dari 30px jadi 24px di layar HP sempit */
+  }
+}

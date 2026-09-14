@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Yup's Doa Harian</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="../css/about.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navbar ditulis manual (logo + menu) -->
+    <header>
+      <div class="logo">
+        <img src="../assets/logo-utama.jpg" alt="Logo Yup's Doa" />
+      </div>
+      <nav>
+        <ul class="ul-nav">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="doa-dzikir.html">Doa & Dzikir</a></li>
+          <li><a href="video.html">Video</a></li>
+          <li><a href="favorit.html">Favorit</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="info">
+      <section class="about-hero">
+        <div class="about-hero-badge">Tentang Kami</div>
+        <h1 class="about-hero-title">
+          Menemani Ibadah Harianmu, 
+        </br>Kapan & Di Mana Saja
+        </h1>
+        <p class="about-hero-subtitle">
+          Yup's Doa adalah rumah digital untuk Doa, Dzikir, dan konten dakwah
+          pilihan dibuat supaya ibadah harianmu terasa lebih dekat, mudah,
+          dan konsisten.
+        </p>
+
+        <!-- Statistik singkat -->
+        <div class="about-stats">
+          <div class="about-stats-item">
+            <span class="about-stats-num">100+</span>
+            <span class="about-stats-label">Doa & Dzikir</span>
+          </div>
+          <div class="about-stats-item">
+            <span class="about-stats-num">2</span>
+            <span class="about-stats-label">Bahasa Teks</span>
+          </div>
+          <div class="about-stats-item">
+            <span class="about-stats-num">24/7</span>
+            <span class="about-stats-label">Bisa Diakses</span>
+          </div>
+          <div class="about-stats-item">
+            <span class="about-stats-num">Gratis</span>
+            <span class="about-stats-label">Selamanya</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ GAMBAR PROFIL ============ -->
+      <section class="about-pict-wrap">
+        <!-- Pembungkus gambar, class ini yang memberi border-radius & shadow -->
+        <div class="about-pict-frame">
+          <img class="responsive-pict" src="../assets/gambar1.jpg" alt="Seseorang sedang berdoa saat matahari terbenam" />
+        </div>
+        <p class="about-pict-caption">Sekilas tentang Yup's Doa</p>
+      </section>
+
+      <!-- ============ grid keunggulan ============ -->
+      <section class="about-features">
+        <h2 class="section-heading">Kenapa Pakai Yup's Doa?</h2>
+        <p class="section-subheading">
+          Dirancang komprehensif supaya umat Islam di seluruh dunia lebih
+          mudah mengamalkan doa dan dzikir harian.
+        </p>
+        <!-- Wadah grid untuk 4 kartu fitur di bawah ini -->
+        <div class="feature-grid">
+          <div class="feature-card">
+            <span class="material-symbols-outlined feature-card-icon" aria-hidden="true">menu_book</span>
+            <h3>Teks Lengkap</h3>
+            <p>Arab dan terjemahan disatukan supaya bacaan lebih mudah dipahami.</p>
+          </div>
+          <div class="feature-card">
+            <span class="material-symbols-outlined feature-card-icon" aria-hidden="true">favorite</span>
+            <h3>Simpan Favorit</h3>
+            <p>Tandai doa dan dzikir yang sering kamu baca agar cepat ditemukan lagi.</p>
+          </div>
+          <div class="feature-card">
+            <span class="material-symbols-outlined feature-card-icon" aria-hidden="true">smart_display</span>
+            <h3>pict Dakwah</h3>
+            <p>Kajian dan tayangan pilihan untuk menambah semangat ibadah harian.</p>
+          </div>
+          <div class="feature-card">
+            <span class="material-symbols-outlined feature-card-icon" aria-hidden="true">travel_explore</span>
+            <h3>Navigasi Ramah</h3>
+            <p>Tampilan simpel dan responsif, nyaman diakses dari HP maupun laptop.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FEEDBACK ============ -->
+      <section class="about-feedback">
+        <div class="feedback-panel">
+          <div class="feedback-panel-intro">
+            <h2>Punya Masukan?</h2>
+            <p>
+              Kritik dan saran kamu sangat berarti supaya Yup's Doa bisa terus
+              berkembang jadi lebih baik.
+            </p>
+            <div class="feedback-contact-mini">
+              <a href="mailto:aaayusraa697@gmail.com:"><span class="material-symbols-outlined" aria-hidden="true">mail</span>
+              <span>aaayusraa697@gmail.com</span></a>
+            </div>
+          </div>
+
+          <!-- form feedback -->
+          <form id="feedback-form" class="feedback-panel-form">
+            <div class="form-row">
+              <div class="input-container">
+                <span class="material-symbols-outlined" aria-hidden="true">person</span>
+                <input type="text" id="name" name="name" placeholder="Nama Kamu" required />
+              </div>
+              <div class="input-container">
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                <input type="email" id="email" name="email" placeholder="Alamat Email" required />
+              </div>
+            </div>
+            <div class="input-container">
+              <span class="material-symbols-outlined" aria-hidden="true">call</span>
+              <input type="tel" id="phone" name="phone" placeholder="Nomor HP" maxlength="14" inputmode="numeric" required />
+            </div>
+            <span id="phone-error" class="input-error"></span>
+            <div class="input-container input-container--textarea">
+              <textarea id="message" name="message" placeholder="Tulis masukanmu di sini..." required></textarea>
+            </div>
+            <button type="submit">Kirim Masukan</button>
+            <div id="form-response" class="form-response"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section contact-section">
+          <h3>Contact</h3>
+          <address>
+            <li>
+              <span class="material-symbols-outlined" aria-hidden="true">location_on</span>Jl. Dakota No.8A, Sukaraja, Kec. Cicendo,
+              Kota Bandung, Jawa Barat.
+            </li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">chat</span> +62 813-7570-3870</li>
+            <li><a href="mailto:aaayusraa697@gmail.com"><span class="material-symbols-outlined" aria-hidden="true">Email</span> aaayusraa697@gmail.com</a></li>
+          </address>
+        </div>
+        <div class="footer-section info-section">
+          <h3>Informasi</h3>
+            <ul>
+              <li><a href="../index.html#jelajah" target="_self">Jelajahi Kami</a></li>
+              <li><a href="../index.html#solat" target="_self">Waktu sholat</a></li>
+              <li><a href="#info">Informasi Web</a></li>
+            </ul>        
+        </div>
+        <div class="footer-section social-section">
+          <h3>Media Sosial</h3>
+          <ul>
+            <li>
+              <a href="https://web.facebook.com"
+                ><span class="material-symbols-outlined" aria-hidden="true">thumb_up</span> Facebook</a
+              >
+            </li>
+            <li>
+              <a href="https://www.instagram.com/__aprllsda04/?__pwa=1"
+                ><span class="material-symbols-outlined" aria-hidden="true">photo_camera</span> Instagram</a
+              >
+            </li>
+            <li>
+              <a href="www.youtube.com/@yusraaprilisda6"
+                ><span class="material-symbols-outlined" aria-hidden="true">play_circle</span> YouTube</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kumpulan Doa-Doa Harian by Yusra</p>
+      </div>
+    </footer>
+
+    <script src="../js/about.js"></script>
+  </body>
+</html>

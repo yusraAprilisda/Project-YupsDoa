@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yup'sDoa - Kumpulan Doa&Dzikir</title>
+    <!--link buat google icon-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!--link google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="./assets/logo-utama.jpg" alt="Logo Yup's Doa" />
+      </div>
+      <nav>
+        <ul class="ul-nav">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="html/doa-dzikir.html">Doa & Dzikir</a></li>
+          <li><a href="html/video.html">Video</a></li>
+          <li><a href="html/favorit.html">Favorit</a></li>
+          <li><a href="html/about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!--buat tampilan vidio di HOME-->
+      <div class="slider">
+        <div class="slide">
+          <video muted loop autoplay>
+            <source src="assets/intro.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <!--buat teks area dalam vidio-->
+        <div class="hero-caption">
+          <p class="eyebrow">Assalamu'alaikum</p>
+          <h1>Sahabat Doa Harianmu</h1>
+        </div>
+      </div>
+
+      <!-- Jadwal Sholat khusus Kota Bandung -->
+      <section class="jadwal-shalat" id="solat">
+        <p class="eyebrow">Waktu Sholat</p>
+        <h2>Jadwal Sholat Hari Ini</h2>
+        <p class="jadwal-shalat-lokasi">
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >location_on</span
+          >Kota Bandung, Jawa Barat
+        </p>
+        <div class="jadwal-shalat-card" id="jadwal-shalat-card">
+          <div class="loader"></div>
+        </div>
+      </section>
+
+      <!-- pengenalan singkat tentang fitur web nya -->
+      <section class="quick-menu" id="jelajah">
+        <p class="eyebrow">Jelajahi</p>
+        <h2>Mau Mulai dari Mana?</h2>
+        <div class="menu-grid">
+          <a class="menu-card" href="html/doa-dzikir.html">
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >auto_stories</span
+            >
+            <h3>Doa & Dzikir</h3>
+            <p>Kumpulan doa dan dzikir/wirid lengkap Arab & artinya</p>
+          </a>
+          <a class="menu-card" href="html/video.html">
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >smart_display</span
+            >
+            <h3>Video</h3>
+            <p>Kumpulan video dakwah dan kajian Islami pilihan</p>
+          </a>
+          <a class="menu-card" href="html/favorit.html">
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >favorite</span
+            >
+            <h3>Favorit</h3>
+            <p>Doa & dzikir yang sudah Anda simpan</p>
+          </a>
+          <a class="menu-card" href="html/about.html">
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >info</span
+            >
+            <h3>About</h3>
+            <p>Kenali lebih lanjut tentang website ini</p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section contact-section">
+          <h3>Contact</h3>
+          <address>
+            <li>
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >location_on</span
+              >Jl. Dakota No.8A, Sukaraja, Kec. Cicendo, Kota Bandung, Jawa
+              Barat.
+            </li>
+            <li>
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >chat</span
+              >
+              +62 813-7570-3870
+            </li>
+            <li>
+              <a href="mailto:aaayusraa697@gmail.com"
+                ><span class="material-symbols-outlined" aria-hidden="true"
+                  >Email</span
+                >
+                aaayusraa697@gmail.com</a
+              >
+            </li>
+          </address>
+        </div>
+        <!-- Footer information section -->
+        <div class="footer-section info-section">
+          <h3>Informasi</h3>
+          <ul>
+            <li><a href="#jelajah">Jelajahi Kami</a></li>
+            <li><a href="#solat">Waktu sholat</a></li>
+            <li><a href="/html/about.html" target="_self">Informasi Web</a></li>
+          </ul>
+        </div>
+        <!-- Footer grup social media -->
+        <div class="footer-section social-section">
+          <h3>Media Sosial</h3>
+          <ul>
+            <li>
+              <a href="https://web.facebook.com"
+                ><span class="material-symbols-outlined" aria-hidden="true"
+                  >thumb_up</span
+                >
+                Facebook</a
+              >
+            </li>
+            <li>
+              <a href="https://www.instagram.com/__aprllsda04/?__pwa=1"
+                ><span class="material-symbols-outlined" aria-hidden="true"
+                  >photo_camera</span
+                >
+                Instagram</a
+              >
+            </li>
+            <li>
+              <a href="https://www.youtube.com/?bp=wgUCEAE%3D"
+                ><span class="material-symbols-outlined" aria-hidden="true"
+                  >play_circle</span
+                >
+                YouTube</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kumpulan Doa-Doa Harian by Yusra</p>
+      </div>
+    </footer>
+    <script src="js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,507 @@
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif; 
+  line-height: 1.6; /* jarak antar baris teks */
+  background: #F7EFE1; 
+  color: #3B2417;
+  margin: 0;
+  padding: 0;
+  user-select: none;    /* mematikan kemampuan user untuk menyeret (drag) & memblok/select teks di seluruh halaman */
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* agar tiap section otomatis punya jarak vertikal yang konsisten di section */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 70px; 
+  padding-bottom: 70px; /* jarak sebelum footer */
+}
+
+/* Aturan umum untuk semua elemen <img> di halaman ini */
+img {
+  overflow-clip-margin: content-box;      /* mengatur seberapa jauh area potongnya dari tepi */
+  overflow: clip;                   /*clip memotong bagian gambar yang melebihi ukuran elemennya,*/
+}
+
+/* Kotak pembungkus section paling atas (judul besar + statistik) */
+.about-hero {
+  max-width: 860px; /* lebar dibatasi biar teks nggak terlalu melebar di layar besar */
+  margin: 60px auto 0; /* rata tengah horizontal */
+  padding: 0 24px; 
+  text-align: center; /* semua teks di dalam hero rata tengah */
+}
+
+/* Label kecil berbentuk pil di atas judul ("Tentang Kami") */
+.about-hero-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 999px; 
+  background: rgba(122, 75, 48, 0.1); 
+  color: #7A4B30;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em; 
+  text-transform: uppercase; 
+  margin-bottom: 18px;
+}
+
+/* Judul utama (h1) di hero */
+.about-hero-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.25; /* jarak antar baris judul, biar nggak terlalu rapat */
+  margin: 0 0 18px;
+}
+
+/* Kalimat penjelas di bawah judul hero */
+.about-hero-subtitle {
+  font-size: 1.05rem;
+  color: #6E5643;
+  max-width: 620px; 
+  margin: 0 auto; /* rata tengah */
+}
+
+/* 4 kotak angka, disusun sejajar */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 kolom, masing-masing lebar sama */
+  gap: 16px; /* jarak antar kotak */
+  max-width: 780px;
+  margin: 40px auto 0;
+}
+
+/* Satu kotak statistik (angka + label di bawahnya) */
+.about-stats-item {
+  background: #FBF6EC;
+  border: 1px solid rgba(122, 75, 48, 0.18);
+  border-radius: 14px;
+  padding: 18px 10px;
+  display: flex;
+  flex-direction: column; /* angka di atas, label di bawah */
+  align-items: center; /* rata tengah horizontal */
+  gap: 4px; /* jarak kecil antara angka & label */
+}
+
+/* Angka besar di tiap kotak statistik */
+.about-stats-num {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #7A4B30;
+}
+
+/* Teks label kecil di bawah angka */
+.about-stats-label {
+  font-size: 0.78rem;
+  color: #6E5643;
+  text-align: center;
+}
+
+/* Gambar tambahan aboout */
+/* Kotak pembungkus luar section gambar (gambar + caption di bawahnya) */
+.about-pict-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center; /* supaya caption di bawah gambar rata tengah */
+}
+
+/* Bingkai gambar */
+.about-pict-frame {
+  border-radius: 24px;
+  overflow: hidden; /* memotong gambar mengikuti sudut membulat bingkainya */
+  box-shadow: 0 20px 45px rgba(59, 36, 23, 0.18); /* bayangan lembut coklat */
+  border: 1px solid rgba(122, 75, 48, 0.18);
+}
+
+/* Gambar pengenalan, dibuat responsif mengikuti lebar wadahnya */
+.responsive-pict {
+  width: 100%;      
+  height: auto;     
+  display: block;     /* menghapus celah kecil di bawah gambar (bug umum elemen img) */
+  max-height: 460px;  /* dibatasi supaya gambar tidak terlalu tinggi di layar besar */
+  object-fit: cover;  /* gambar dipotong rapi mengisi area tanpa gepeng/melar */
+}
+
+/* Teks keterangan kecil di bawah gambar */
+.about-pict-caption {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: #6E5643;
+  font-style: italic;
+}
+
+/* Judul besar yang dipakai berulang di beberapa section */
+.section-heading {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+/* Sub-judul / kalimat pendukung di bawah .section-heading */
+.section-subheading {
+  text-align: center;
+  color: #6E5643;
+  max-width: 560px;     /* dibatasi supaya baris teksnya nggak kepanjangan */
+  margin: 0 auto 36px;   /* rata tengah + jarak ke konten di bawahnya */
+}
+
+/* Kotak pembungkus luar section "Kenapa Pakai Yup's Doa?" */
+.about-features {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Wadah grid untuk 4 kartu fitur, disusun 4 kolom sejajar di layar besar */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; /* jarak antar kartu */
+}
+
+/* Satu kartu fitur (ikon + judul + deskripsi singkat) */
+.feature-card {
+  background: #FFFFFF; 
+  border: 1px solid rgba(122, 75, 48, 0.18);
+  border-radius: 14px;
+  padding: 26px 20px;
+  text-align: left;
+  /* transisi halus untuk efek hover di bawah (transform & shadow) */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Efek saat kartu fitur di-hover: sedikit terangkat ke atas + bayangan membesar */
+.feature-card:hover {
+  transform: translateY(-6px); 
+  box-shadow: 0 16px 30px rgba(59, 36, 23, 0.12);
+}
+
+/* Kotak ikon bulat/kotak-membulat di atas tiap kartu fitur */
+.feature-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* ikon rata tengah di dalam kotaknya */
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(122, 75, 48, 0.12); 
+  color: #7A4B30;
+  font-size: 24px; /* ukuran ikon Material Icons */
+  margin-bottom: 14px;
+}
+
+/* Judul tiap kartu fitur */
+.feature-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+/* Deskripsi singkat di tiap kartu fitur */
+.feature-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6E5643;
+}
+
+a{
+  color: #E8CBA6;
+}
+/* feedback panel 2 kolom */
+/* Kotak pembungkus luar section feedback */
+.about-feedback {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Panel utama form feedback: dibagi 2 kolom lewat CSS Grid.
+   Kolom kiri (intro/ajakan) sedikit lebih sempit (0.9fr) daripada
+   kolom kanan (form, 1.1fr) */
+.feedback-panel {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  background: #4A2E1D; 
+  border-radius: 24px;
+  overflow: hidden; /* memotong sudut anak elemen mengikuti border-radius panel */
+  box-shadow: 0 20px 45px rgba(59, 36, 23, 0.25);
+}
+
+/* Kolom kiri panel */
+.feedback-panel-intro {
+  padding: 44px 38px;
+  color: #F7EFE1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* konten rata tengah vertikal di dalam kolom */
+  gap: 14px;
+}
+
+/* Judul "Punya Masukan?" di kolom kiri */
+.feedback-panel-intro h2 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+/* Paragraf penjelas di kolom kiri */
+.feedback-panel-intro p {
+  margin: 0;
+  color: rgba(247, 239, 225, 0.75); 
+  font-size: 0.95rem;
+}
+
+/* Baris kecil berisi ikon amplop + alamat email */
+.feedback-contact-mini {
+  display: flex;
+  align-items: center; /* ikon & teks email sejajar rata tengah vertikal */
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #E8CBA6; 
+}
+
+/* Kolom kanan panel */
+.feedback-panel-form {
+  background: #FBF6EC; 
+  padding: 40px;
+  display: flex;
+  flex-direction: column; /* elemen form disusun ke bawah berurutan */
+  gap: 16px; /* jarak antar elemen form */
+}
+
+/* Baris yang menampung 2 input sejajar (Nama & Email) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 kolom sama lebar */
+  gap: 16px;
+}
+
+/* Bingkai pembungkus tiap kolom input (ikon + kotak input jadi satu baris) */
+.input-container {
+  display: flex;
+  align-items: center; /* ikon & input sejajar rata tengah vertikal */
+  width: 95%;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px; 
+  background: #ffffff; 
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+/* untuk kolom pesan textarea: ikon & teks diratakan */
+.input-container--textarea {
+  align-items: flex-start;
+  padding-top: 12px;
+}
+
+/* Ikon kecil (person/mail/call) di dalam tiap .input-container */
+.input-container .material-symbols-outlined {
+  color: #4A2E1D;
+  font-size: 20px;
+  margin-right: 8px; /* jarak ikon ke kotak input di sebelahnya */
+}
+
+/* Gaya semua kolom input teks di form feedback */
+input {
+  width: 100%;
+  font-size: 0.95em;
+  color: #3B2417;
+  border: none; /* menghilangkan border bawaan browser pada input */
+  background: none; 
+  padding: 6px 0;
+  outline: none; /* menghilangkan garis biru/highlight bawaan browser saat input diklik/fokus */
+}
+
+/* Gaya kotak pesan (kolom teks panjang/multi-baris) di form feedback */
+textarea {
+  width: 100%;
+  font-size: 0.95em;
+  color: #3B2417;
+  height: 90px; 
+  border: none;
+  background: none;
+  padding: 6px 0;
+  outline: none;
+  font-family: 'Inter', Arial, sans-serif; 
+  resize: none; /* mencegah user menarik-narik untuk mengubah ukuran textarea */
+}
+
+/* Gaya tombol "Kirim Masukan" */
+button {
+  width: 100%;
+  color: #fff; 
+  font-size: 1.05em;
+  font-weight: 600;
+  cursor: pointer; /* kursor jadi ikon tangan saat hover, tanda bisa diklik */
+  padding: 14px;
+  background: #7A4B30; 
+  border: none;
+  border-radius: 10px; 
+  /* transisi halus untuk efek hover di bawah (transform & warna latar) */
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+/* Efek saat tombol di-hover: sedikit membesar & warnanya jadi lebih gelap */
+button:hover {
+  transform: scale(1.02);
+  background: #4A2E1D;
+}
+
+/* Teks pemberitahuan yang muncul setelah form disubmit, isinya diisi
+   lewat JavaScript di about.js, pesan sukses atau pesan "lengkapi dulu" */
+.form-response {
+  font-size: 0.9em;
+  font-weight: 600; /* agak tebal biar menonjol */
+  text-align: center;
+  color: #7A4B30;
+  min-height: 20px; /* dikasih tinggi minimum supaya layout tidak "loncat"
+                        saat teksnya baru muncul setelah submit */
+}
+
+.input-error{
+  display: block;
+  min-height: 16px;
+  margin-top: 4px;
+  margin-left: 4px;
+  font-size: 10px;
+  color: #c0392b;
+}
+
+footer {
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  position: relative;
+  background: rgba(43, 27, 18, 0.85); 
+  padding: 40px 0 0;
+}
+
+/* Wadah dalam footer yang menyusun kolom-kolom info (kontak, sosial, dll) */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap; /* kalau layar sempit, kolom-kolom boleh "turun baris" */
+  justify-content: space-between; /* jarak antar kolom disebar merata */
+  max-width: 1200px;
+  margin: 0px auto; 
+  padding: 0px 20px;
+}
+
+/* Tiap kolom di dalam footer */
+.footer-section {
+  /* flex: auto artinya kolom ini boleh tumbuh/menyusut ukurannya secara fleksibel mengikuti ruang yang tersedia */
+  flex: auto;
+  margin: 30px 20px;
+}
+
+/* Gaya teks umum di dalam kolom footer (paragraf, alamat, daftar) */
+.footer-section address,
+.footer-section ul,
+.footer-section li {
+  font-size: 14px;
+  list-style: none; 
+  margin: 5px 0px;
+}
+
+/* Judul tiap kolom footer (misal "Kontak", "Ikuti Kami") */
+.footer-section h3 {
+  margin-bottom: 15px;
+}
+
+.footer-section address {
+  line-height: 1.5; /* jarak antar baris alamat biar lebih lega */
+}
+
+.footer-section li {
+  margin-bottom: 10px;
+}
+
+/* Warna link di dalam footer (misal alamat email/nomor telepon yang jadi link) */
+.footer-section a {
+  color: #fff;
+  text-decoration: none; 
+}
+
+.footer-section a:hover {
+  color: #D9BFA0
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0px;
+}
+
+/* Kolom khusus "sosial media": daftar link disusun ke BAWAH (menumpuk) */
+.social-section ul {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Baris paling bawah halaman, berisi teks hak cipta/copyright */
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  padding: 20px 0;
+  margin-top: 20px;
+  background: #21140D; 
+  color: #D9BFA0;
+}
+
+/* =============== RESPONSIVE =============== */
+@media (max-width: 1024px) {
+  /* Grid fitur dari 4 kolom jadi 2 kolom, supaya kartu tidak terlalu sempit */
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Grid statistik dari 4 kolom jadi 2 kolom (2x2) */
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Panel feedback dari 2 kolom jadi 1 kolom (intro di atas, form di bawah) */
+  .feedback-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Aturan khusus untuk layar dengan lebar maksimal 768px (HP) */
+@media (max-width: 768px) {
+  /* Judul hero diperkecil supaya tidak terlalu besar di layar sempit */
+  .about-hero-title {
+    font-size: 1.8rem;
+  }
+
+  /* Jarak antar section diperkecil di layar HP */
+  main {
+    gap: 50px;
+  }
+
+  /* Baris Nama & Email ditumpuk jadi 1 kolom di layar sempit */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Padding kolom kiri & kanan panel feedback dikurangi di layar HP */
+  .feedback-panel-intro,
+  .feedback-panel-form {
+    padding: 28px 22px;
+  }
+
+  /* Di layar HP, kolom-kolom footer ditumpuk vertikal (bukan menyamping)
+     supaya lebih mudah dibaca di layar sempit */
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin: 5px 0px;
+  }
+}

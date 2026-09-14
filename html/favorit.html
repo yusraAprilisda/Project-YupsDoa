@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorit - Yup'sDoa</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="../css/favorit.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Buat Navbar paling atas-->
+  <header>
+    <div class="logo">
+      <img src="../assets/logo-utama.jpg" alt="Logo Yup's Doa" />
+    </div>
+    <nav>
+      <ul class="ul-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="doa-dzikir.html">Doa & Dzikir</a></li>
+        <li><a href="video.html">Video</a></li>
+        <li><a href="favorit.html">Favorit</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+
+    </nav>
+
+    <!--buat judul dan capt di awal-->
+  </header>
+  <div class="page-heading">
+    <h1><span class="material-symbols-outlined" aria-hidden="true">favorite</span> Favorit</h1>
+    <p>Doa dan Dzikir yang telah Anda simpan</p>
+  </div>
+
+  <!-- <main> ini awalnya kosong, isinya akan diisi sepenuhnya lewat favorit.js -->
+  <main id="list-favorit">
+  </main>
+
+  <!-- Tombol scroll ke atas, favorit.js hanya mengatur kapan muncul/hilang (.show) dan aksi klik-nya -->
+  <button id="scroll-to-top" class="scroll-to-top">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Doa & Dzikir by Yusra</p>
+    </div>
+  </footer>
+
+
+  <script src="../js/fav.js"></script>
+  <script src="../js/favorit.js"></script>
+</body>
+</html>

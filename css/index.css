@@ -176,7 +176,7 @@ video {
 /*ngatur tanggal yang di dalam wadah jadwal solat*/
 .shalat-tanggal {
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.03em;
   color: #d9bfa0;
@@ -199,7 +199,7 @@ video {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   padding: 16px 8px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.08);
